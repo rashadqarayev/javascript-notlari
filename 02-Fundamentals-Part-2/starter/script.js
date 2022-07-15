@@ -274,13 +274,16 @@ const friends = ['Michael','Steven','Peter'];
 //     ['Michael','Peter','Steven ']
 // ]
 
-// const reshad = {
-//     firstName: 'Reshad',
-//     lastName : 'Qarayev',
-//     age: 2037-2004,
-//     job:'student',
-//     friends:['Michael','Peter','Steven ']
-// }
+const reshad = {
+    firstName: 'Reshad',
+    lastName : 'Qarayev',
+    age: 2037-2004,
+    job:'student',
+    friends:['Michael','Peter','Steven ']
+}
+
+const key = Object.keys(reshad)
+console.log(key);
 
 // arrayla objectin ferqi::
 // biz arraydaki her hansi bir value ni istesek onu sira nomresi ile tapa bilirik
