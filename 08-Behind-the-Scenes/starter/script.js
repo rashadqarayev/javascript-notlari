@@ -36,7 +36,6 @@ Bu variableler de for, if else ve ya diger bloklarda istifade oluna biler. Biz i
 
 */
 
-
 /*
 function calcAge (birthYear){
     const age = 2037-birthYear;
@@ -81,10 +80,9 @@ calcAge(1991);
 console.log(age); error
 printAge(); error*/
 
-
 // Hoisting with variables
 
-console.log(me); //'undefined' -- 'hoisted oldu amma undefinied gosterecek'
+/*console.log(me); //'undefined' -- 'hoisted oldu amma undefinied gosterecek'
 // console.log(job); // error verir -- cunki job tdz de yerlesir.
 // console.log(year); // error verir -- cunki year da tdz da yerlesir
 
@@ -128,4 +126,137 @@ const z = 3;
 
 console.log(x === window.x);
 console.log(y === window.y);
-console.log(z === window.z);
+console.log(z === window.z); */
+
+// This sozunun izahi
+
+// console.log(this);
+
+/*const calcAge = function (birthYear){
+    console.log(2037-birthYear);
+    // console.log(this);
+}
+calcAge(2004);
+
+// Burdaki this undefinied verecek!
+
+const calcAgeArrow = (birthYear)=>{
+    console.log(2037-birthYear);
+    // console.log(this);
+}
+calcAgeArrow(2004)
+// Burdaki this ise window obyektini verecek!;
+
+const reshad = {
+    year:2004,
+    calcAge: function(){
+        console.log(this);
+        console.log(2037-this.year);
+    }
+}
+
+reshad.calcAge();
+
+// Burdaki this ise bize reshad obyektini verir
+
+const matilda = {
+    year:2017,
+}
+
+matilda.calcAge = reshad.calcAge;
+matilda.calcAge();
+
+const f = reshad.calcAge;
+f(); */
+
+/*const reshad = {
+  firstName: 'Reshad',
+  year: 1991,
+  calcAge: function () {
+    // console.log(this);
+    console.log(2037 - this.year);
+
+    // Solution 1
+    // const self = this;
+    // const isMillenial = function(){
+    //     console.log(self);
+    //     console.log(self.year >= 1981 && self.year <= 1996);
+    // };
+
+    // Solution 2
+    const isMillenial = ()=>{
+        console.log(this);
+        console.log(this.year >= 1981 && this.year <= 1996);
+    }
+
+
+    isMillenial();
+   
+  },
+
+  greet: () => console.log(`Hey ${this.firstName}`),
+};
+// Arrow funksiyalar this i qebul etmir ve undefinied verir.
+// Arrow funksiyalarda this window obyekti kimi aparir ozunu
+reshad.greet(); 
+reshad.calcAge();
+
+// Arguments keyword
+
+const addExpr = function(a,b){
+    console.log(arguments);
+    // arquments ancaq regular funksiyalarda movcuddur.
+    return a + b;
+}
+addExpr(5,10);
+addExpr(5,10,15,20);
+
+var addArrow = (a,b) =>{
+    console.log(arguments);
+    return a + b;
+}
+
+addArrow(2,4) */
+
+// Primitve types
+let lastName = 'Qarayev';
+let oldLastName = lastName;
+lastName = 'Kharov';
+console.log(lastName); // Kharov
+console.log(oldLastName); // Qarayev
+
+
+// Reference types
+const jessica = {
+    firstName : "Jessica",
+    lastName : "Williams",
+    age:27,
+}
+
+const marriedjessica = jessica;
+marriedjessica.lastName = 'Davis';
+console.log('Before marriage :',jessica);
+console.log('After marriage : ' , marriedjessica);
+
+// Copying objects
+
+const jessica2 = {
+    firstName : "Jessica",
+    lastName : "Williams",
+    age:27,
+    family : [
+        'Alice', 'Bob'
+    ]
+}
+
+const jessicaCopy = Object.assign({},jessica2)
+jessicaCopy.lastName = 'Davis';
+
+console.log('Before marriage :',jessica2);
+console.log('After marriage : ' , jessicaCopy);
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage :',jessica2);
+console.log('After marriage : ' , jessicaCopy);
