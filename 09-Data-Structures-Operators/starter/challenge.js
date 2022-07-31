@@ -1,92 +1,104 @@
 const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-      [
-        'Neuer',
-        'Pavard',
-        'Martinez',
-        'Alaba',
-        'Davies',
-        'Kimmich',
-        'Goretzka',
-        'Coman',
-        'Muller',
-        'Gnarby',
-        'Lewandowski',
-      ],
-      [
-        'Burki',
-        'Schulz',
-        'Hummels',
-        'Akanji',
-        'Hakimi',
-        'Weigl',
-        'Witsel',
-        'Hazard',
-        'Brandt',
-        'Sancho',
-        'Gotze',
-      ],
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
     ],
-    score: '4:0',
-    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
-    odds: {
-      team1: 1.33,
-      x: 3.25,
-      team2: 6.5,
-    },
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
 };
 
+// Challange 4
 
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
 
-// Challenge 3 
+document.querySelector('button').addEventListener('click', function () {
+const text = document.querySelector('textarea').value
+console.log(text);
+});
+// test
+// underscore_case
+// first_name
+// some_variable
+// calculate_age
+// delayed_departure
 
+// output
+// underscoreCase
+// firstName
 
-const gameEvents = new Map([
-  [17, '⚽️ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽️ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽️ GOAL'],
-  [80, '⚽️ GOAL'],
-  [92, '🔶 Yellow card'],
-]);
+const str = 'underscore_case';
+console.log(str.replace('_', ''));
+
+// Challenge 3
+
+// const gameEvents = new Map([
+//   [17, '⚽️ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽️ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽️ GOAL'],
+//   [80, '⚽️ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
 
 // task 1
-const events = [...new Set ([gameEvents.values()])];
-console.log(events);
+// const events = [...new Set ([gameEvents.values()])];
+// console.log(events);
 
 // task 2
-gameEvents.delete(64)
-console.log(gameEvents);
+// gameEvents.delete(64)
+// console.log(gameEvents);
 
-// task 3 
-console.log(`An event happend, on average ,every ${90 / gameEvents.size} minutes`);
+// task 3
+// console.log(`An event happend, on average ,every ${90 / gameEvents.size} minutes`);
 
 // task 4
 
-for(const [min,event] of gameEvents){
-  const half = min <= 45 ? 'First' : "Second";
-  console.log(
-    `[${half} HALF] ${min} : ${event}`
-  );
-}
+// for(const [min,event] of gameEvents){
+//   const half = min <= 45 ? 'First' : "Second";
+//   console.log(
+//     `[${half} HALF] ${min} : ${event}`
+//   );
+// }
 
-
-
-
-
-
-
-  
 // CHALLENGE 1
-
 
 // Task 1
 
@@ -94,14 +106,13 @@ for(const [min,event] of gameEvents){
 // console.log(...players1);
 // console.log(...players2);
 
-
 // Task 2
 
 // const [gk,...fieldPlayers] = players1;
 
 // console.log(`GK POSITION ${gk}` , fieldPlayers);
 
-// Task3 
+// Task3
 
 // const allPlayers = [...players1, ...players2]
 // console.log(allPlayers);
@@ -131,10 +142,8 @@ for(const [min,event] of gameEvents){
 // team1 < team2 && console.log('Team 1 is likely to win');
 // team1 > team2 && console.log('Team 2 is likely to win');
 
-
 // Challenge 2
 // Task 1
-
 
 // for(const [reqem,qoal] of game.scored.entries()){
 //   console.log(`Goal ${reqem + 1} ${qoal}`);
@@ -151,7 +160,6 @@ for(const [min,event] of gameEvents){
 // }
 // console.log(sum);
 // console.log(average);
-
 
 // Task 3
 

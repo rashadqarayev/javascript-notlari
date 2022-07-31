@@ -50,6 +50,63 @@ const restaurant = {
   },
 };
 
+// split methodu - stringi eyni formada hisselere bolub arraya yerlesdirir.
+console.log('a+very+nice+string'.split('+'));
+// Output -- (4) ['a', 'very', 'nice', 'string']
+console.log('Reshad Qarayev'.split(' '));
+// (2) ['Reshad', 'Qarayev']
+
+const [firstName, lastName] = 'Reshad Qarayev'.split(' ');
+
+// join methodu - bu method split methodunun tam eksidir.arrayda yazilanlari stringde birlesdirir
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+// output -- Mr. Reshad QARAYEV
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+  for (const n of names) {
+  // namesUpper.push(n[0].toUpperCase() + n.slice(1))
+  namesUpper.push(n.replace(n[0],n[0].toUpperCase()))
+  }
+  console.log(namesUpper.join(' '));
+};
+capitalizeName('jessica and smith davis');
+capitalizeName('rehsad qarayev');
+
+// Padding
+
+const message = 'Go to gate 23!';
+// pad start methodu - birinci deyer stringin uzunlugunu, ikinci deyer ise evvelden baslayaraq ona + elave edilir , ne vaxt ki uzunlug 25 olur bu hadise dayanir
+console.log(message.padStart(25, '+'));
+// +++++++++++Go to gate 23!
+console.log('Reshad'.padStart(15,'+'));
+// +++++++++Reshad
+
+const maskCreditCard = function(number){
+  const str = String(number);
+  const last  = str.slice(-4);
+  return last.padStart(str.length, '*')
+}
+
+console.log(maskCreditCard(12122112));
+// output ----   ****2112
+console.log(maskCreditCard(144243453223))
+// output ----  ********3223
+console.log(maskCreditCard('1213212'));
+
+// Repeat methodu
+const message2 = 'Bad weather... All departures delayed... ';
+console.log(message2.repeat(5));
+// burda repeat vasitesile eyni stringi 5 defe cagiriq
+
+const planesInLine = function(n){
+  console.log(`There are ${n} planes in line ${'p'.repeat(n)}`);
+}
+
+planesInLine(12);
+// output There are 12 planes in line pppppppppppp
 
 
 
@@ -60,9 +117,119 @@ const restaurant = {
 
 
 
+/*
+Stringlerle is - Part 2
+
+const airline = 'TAP Air Portugal';
+console.log(airline.toLowerCase()); // hamisi balaca
+console.log(airline.toUpperCase()); // hamisi boyuknen;
+const passenger = "jOnAS"; // Jonas
+butun herfleri balacaya cevirdik
+const passengerLower = passenger.toLowerCase();
+
+burada ise ilk herfi boyuk etdik
+const passengerCorrect = passengerLower[0].
+
+toUpperCase() + passengerLower.slice(1)
+console.log(passengerCorrect); // Jonas
 
 
+Comparing emails
+const email = 'hello@jonas.io';
+const loginEmail = '  Hello@Jonas.io \n';
 
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = loginEmail.trim();
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+'hello@jonas.io'
+
+console.log(email === normalizedEmail);// true
+
+replacing
+$ isaresini # isaresine cevirdik
+const priceGB = '288,97$';
+const priceUS = priceGB.replace('$', '#').replace(',','.')
+console.log(priceUS);
+
+const announcement = 'All passengers come to barding door 23. Borading door 23!';
+console.log(announcement.replace(/door/g,'gate'));
+
+Booleans
+
+const plane = 'Airbus A320neo';
+includes -- terkibinde varsa
+console.log(plane.includes('A3'));
+startsWith - hemin deyerle baslayirsa
+console.log(plane.startsWith('Air'));
+
+if(plane.startsWith("Airbus") && plane.endsWith('neo')){
+  console.log('Part of New Airbus');
+}
+
+
+Pracitse exercise
+
+const checkBaggage = function(items){
+const baggage = items.toLowerCase();
+if(baggage.includes('knife') || baggage.includes('gun')){
+  console.log('You are not allowed on board');
+}else{
+  console.log('Welcome board');
+}
+}
+checkBaggage('i have a laptop,some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protecton')
+
+
+*/
+
+/*
+/// Stringlerle is - Part 1
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); // A
+console.log(plane[1]); // 3
+
+console.log(airline.length); // 16
+console.log('B737'.length); // 4
+
+indexof - o herfin hansi indexde oldugunu gosterir
+console.log(airline.indexOf('r'));
+lastindexof - ise herf iki defe olanda sonuncunu gosterir
+console.log(airline.lastIndexOf('r'));
+
+console.log(airline.indexOf('Portugal')); // 8
+
+Slice methodu - 4 cu indexden baslayaraq loga stringi yeniden yaz
+console.log(airline.slice(4)); // Air Portugal
+console.log(airline.slice(4,7)); // Air
+
+console.log(airline.slice(0, airline.indexOf(' '))); // TAP
+
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // Portugal
+
+eger slice de -1 , -2 yazarsaq, o sondan baslayaraq geri gelecek
+console.log(airline.slice(-2)); // al
+console.log(airline.slice(1 , -1)); // AP Air Portuga
+
+const checkMiddleSeat = function(seat){
+const s = seat.slice(-1);
+if(s === 'B' || s === "E")
+console.log("You got middle seat");
+else{
+  console.log('You got lucky');
+}
+}
+checkMiddleSeat('11B')
+
+console.log(airline.slice());
+
+
+*/
 
 /*
 /// Map ve methodlari
