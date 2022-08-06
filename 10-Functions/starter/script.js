@@ -122,8 +122,81 @@ document.body.addEventListener('click',high5);
 
 // greet('Hello')("Reshad") // Hello Reshad
 
-const greet = (greeting)=> name => console.log(`${greeting} ${name}`);
+// const greet = (greeting)=> name => console.log(`${greeting} ${name}`);
 
-greet("Hello")("Alakbar") // Hello Alakbar 
+// greet("Hello")("Alakbar") // Hello Alakbar 
 
 
+
+
+// Call and Apply Method
+
+const lutthansa = {
+    airline: "Luthansa",
+    iataCode : "LH",
+    bookings : [],
+    book(flightNum,name){
+        console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+        this.bookings.push({flight:`${this.iataCode}${flightNum}`,name})
+    }
+}
+
+lutthansa.book(238,'Reshad Qarayev');
+// Reshad Qarayev booked a seat on Luthansa flight LH238
+lutthansa.book(636,'Nicat Alizada');
+// Nicat Alizada booked a seat on Luthansa flight LH636
+console.log(lutthansa);
+
+const eurowings =  {
+    airline:"Eurowings",
+    iataCode:"EW",
+    bookings:[]
+}
+
+const book = lutthansa.book;
+
+// Biz isteyirik ki eurowings obyektinde book funksiyasini isledek. Bu yolla yazsaq undefinied verecek
+// book(23,'Sarh Williams')
+
+// call -- bu method da ilk hansi objeni deyirikse onu yaziriq, daha sonra fuknsiya  arqumentlerini yaziriq
+book.call(eurowings,23,'Sarah Williams');
+// Sarah Williams booked a seat on undefined flight EW23
+console.log(eurowings);
+
+book.call(lutthansa,238,'Cristiano Ronaldo');
+//Cristiano Ronaldo booked a seat on Luthansa flight LH238
+
+
+// CALL methodu bir funksiyani muxtelif objelerde cagirmaqa yardimci olur.
+
+const swiss = {
+    airline: "Swiss Air Lines",
+    iataCode:"LX",
+    bookings:[]
+}
+
+book.call(swiss,444,'Lionel Messi')
+// Lionel Messi booked a seat on Swiss Air Lines flight LX444
+
+// Apply Methodu - call methodu ile eyni isi gorur.Ferqi odur ki , bu method funksiya arqumentlerini yalniz array icinde qebul edir. Diger hallarda error verir
+
+// Hal hazirda modern JS de apply methodu islenmir
+const flightData = [533,"George Coper"];
+book.apply(swiss,flightData)
+// George Coper booked a seat on Swiss Air Lines flight LX533
+
+// Bind method -- bu method da digerlerine oxsardir. Amma bu method yeni bir funksiya return edir ve this ifadesi onun terkibinde olan objeye aid olur.
+
+// book.call(eurowings,23,'Sarah Williams');
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lutthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23,'Seteven Williams');
+
+const bookEW23 = book.bind(eurowings,23);
+bookEW23('Reshad Qarayev');
+// Reshad Qarayev booked a seat on Eurowings flight EW23
+
+bookEW23('Nicat Alizade');
+// Nicat Alizade booked a seat on Eurowings flight EW23
